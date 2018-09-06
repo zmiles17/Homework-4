@@ -15,7 +15,7 @@ nav {
     color: white;
     padding: 10px;
     font-family: 'Montserrat';
-    font-weight: 500;
+    font-weight: bold;
 }
 ul {
     padding-top: 310px;
@@ -31,7 +31,7 @@ header {
 }
 h1 {
     height: 100%;
-    padding-top: 20px;
+    padding-top: 30px;
     padding-right: 20px;
     font-family: 'Montserrat';
     font-weight: bold;
