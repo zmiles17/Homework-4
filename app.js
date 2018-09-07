@@ -41,31 +41,35 @@ const employeeList = [
   }
 ];
 
-const userCommand = prompt('enter a command');
- 
-  if(userCommand === 'print'){ //print
+
+ const print = function(){
+   $('#content').empty();
     for (j = 0; j < employeeList.length; j++) {
       render(employeeList[j].name);
       render(employeeList[j].officeNum);
       render(employeeList[j].phoneNum);
     }
   }
-  else if(userCommand === 'verify'){ //verify 
-    const verifyEmployee = prompt('enter an employee name');
-    let inList = false;
+
+const verify = function(){
+  $('#content').html('<input class="verify-input"></input> <button id="verify-btn">Verify</button>');
+    let verifyEmployee = $('.verify-input').val();
+    let inList = '';
     for(i = 0; i < employeeList.length; i++) {
       if(verifyEmployee === employeeList[i].name) {
         inList = true;
       }
     }
     if (inList) {
-      render('true');
+      render('Employee Found');
     }
     else {
-      render('false');
+      render('Employee Not Found');
     }
   }
-    else if (userCommand === 'lookup') { //lookup
+
+const lookup = function(){
+     
       const lookupEmployee = prompt('enter employee name');
       for(i = 0; i < employeeList.length; i++) {
         if(employeeList[i].name === lookupEmployee){
@@ -75,7 +79,9 @@ const userCommand = prompt('enter a command');
         }
       }
     }
-    else if (userCommand === 'contains') {
+  
+  const contains = function(){
+     
       const containsEmployeeName = prompt(`enter a name or part of an employee's name`);
 
       for(i = 0; i < employeeList.length; i++) {
@@ -87,7 +93,9 @@ const userCommand = prompt('enter a command');
     
       }
     }
-    else if (userCommand === 'update') {
+  
+  const update = function(){
+  
       const updateEmployee = prompt('enter an employee');
       const updateField = prompt('enter a field to update (name, officeNum, phoneNum)');
       const updateValue = prompt('enter new value (name, telephone number, or office number');
@@ -100,7 +108,9 @@ const userCommand = prompt('enter a command');
           }
         }
       }
-    else if (userCommand === 'add') {
+    
+    const add = function(){
+     
       const addEmployee = prompt('enter a new employee');
       const officeNumber = prompt('enter an office number');
       const teleNumber = prompt('enter a telephone number');
@@ -115,7 +125,9 @@ const userCommand = prompt('enter a command');
         render(employeeList[i].phoneNum);
       }
     }
-    else if(userCommand === 'delete') {
+  
+  const deleteEmp = function(){
+    
       const deleteEmployee = prompt('delete an employee');
       let index = -1;
       for(i = 0; i < employeeList.length; i++) {
@@ -130,8 +142,17 @@ const userCommand = prompt('enter a command');
         render(employeeList[i].phoneNum);
       }
     }
-    else{
-      alert('invalid command');
-    }
   
+   
 
+
+    $(".print-nav").on('click', print);
+    $(".verify-nav").on('click', verify);
+    $(".lookup-nav").on('click', lookup);
+    $(".contains-nav").on('click', contains);
+    $(".update-nav").on('click', update);
+    $(".add-nav").on('click', add);
+    $(".delete-nav").on('click', deleteEmp);
+
+    
+    

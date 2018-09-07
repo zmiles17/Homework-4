@@ -42,7 +42,7 @@ const $ = function (sel) {
         nodeList[i].innerHTML = '';
       }
     }
-  
+    
   
     const publicAPI = {
       text: text,
@@ -51,7 +51,7 @@ const $ = function (sel) {
       val: val,
       html: html,
       append: append,
-      empty: empty
+      empty: empty,
     }
   
     return publicAPI;
@@ -59,4 +59,5 @@ const $ = function (sel) {
   
   
   }
+  
   
