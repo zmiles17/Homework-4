@@ -126,10 +126,13 @@ function updateFunc(){
 }
 
 const add = function () {
-
-  const addEmployee = prompt('enter a new employee');
-  const officeNumber = prompt('enter an office number');
-  const teleNumber = prompt('enter a telephone number');
+  $('#content').html('<p>Name</p> <input class="add-name-input"></input> <p>Number</p> <input class="addnum-input"></input> <p>Phone</p> <input class="phone-input"></input> <button class="add-btn">Add</button>');
+  $('.add-btn').on('click', addFunc);
+}
+const addFunc = function(){
+  const addEmployee = $('.add-name-input').val();
+  const officeNumber = $('.addnum-input').val();
+  const teleNumber = $('.phone-input').val();
   employeeList.push({
     name: addEmployee,
     officeNum: officeNumber,
@@ -143,21 +146,24 @@ const add = function () {
 }
 
 const deleteEmp = function () {
-
-  const deleteEmployee = prompt('delete an employee');
+  $('#content').html('<input class="delete-input"></input> <button class="delete-btn">Delete</button>')
+  $('.delete-btn').on('click', deleteFunc);
+}
+const deleteFunc = function(){
+  const deleteEmployee = $('.delete-input').val().toLowerCase().trim();
   let index = -1;
   for (i = 0; i < employeeList.length; i++) {
-    if (employeeList[i].name === deleteEmployee) {
+    if (employeeList[i].name.toLowerCase().trim() === deleteEmployee) {
       index = i;
+      render('Employee Deleted');
     }
   }
   employeeList.splice(index, 1);
   for (i = 0; i < employeeList.length; i++) {
-    render(employeeList[i].name);
-    render(employeeList[i].officeNum);
-    render(employeeList[i].phoneNum);
+    
   }
 }
+
 
 
 
