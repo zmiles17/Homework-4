@@ -21,7 +21,8 @@ ul {
     padding-top: 310px;
 }
 li {
-    padding-bottom: 20px;
+    margin-bottom: 20px;
+    cursor: pointer;
 }
 header {
     background-color: rgb(0, 156, 228);
@@ -31,9 +32,31 @@ header {
 }
 h1 {
     height: 100%;
-    padding-top: 30px;
-    padding-right: 20px;
+    margin-top: 30px;
+    margin-right: 20px;
     font-family: 'Montserrat';
-    font-weight: bold;
+    font-weight: 900;
 }
-
+#content {
+    font-family: 'Montserrat';
+    font-size: 40px;
+    color: black;
+    font-weight: 900;
+    margin: 1em;
+}
+button {
+    background: none;
+    color:lightslategray;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    font-size: 20px;
+}
+input {
+    border-radius: 10px;
+    border-color: gray;
+    font-family: 'Montserrat';
+    color: black;
+}
