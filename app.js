@@ -80,7 +80,7 @@ function lookupFunc() {
 
   const lookupEmployee = $('.lookup-input').val().toLowerCase().trim();
   for (i = 0; i < employeeList.length; i++) {
-    if (employeeList[i].name.toLowerCase() === lookupEmployee) {
+    if (employeeList[i].name.toLowerCase().trim() === lookupEmployee) {
       render(employeeList[i].name);
       render(employeeList[i].officeNum);
       render(employeeList[i].phoneNum);
@@ -108,12 +108,15 @@ function containsFunc() {
 }
 
 const update = function () {
-
-  const updateEmployee = prompt('enter an employee');
-  const updateField = prompt('enter a field to update (name, officeNum, phoneNum)');
-  const updateValue = prompt('enter new value (name, telephone number, or office number');
+  $('#content').html('<p>Name</p> <input class="empInput"></input>   <p>Number</p> <input class="fieldInput"></input>  <p>Phone</p> <input class="valueInput"></input>  <button id="update-btn">Update</button>'); 
+  $('#update-btn').on('click', updateFunc);
+}
+function updateFunc(){
+  const updateEmployee = $('.empInput').val().toLowerCase().trim();
+  const updateField = $('.fieldInput').val().trim();
+  const updateValue = $('.valueInput').val().trim();
   for (i = 0; i < employeeList.length; i++) {
-    if (employeeList[i].name === updateEmployee) {
+    if (employeeList[i].name.toLowerCase() === updateEmployee) {
       employeeList[i][updateField] = updateValue;
       render(employeeList[i].name);
       render(employeeList[i].officeNum);
