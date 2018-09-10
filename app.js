@@ -52,7 +52,7 @@ const print = function () {
 }
 
 const verify = function () {
-  $('#content').html('<input class="verify-input"></input> <button id="verify-btn">Verify</button>');
+  $('#content').html('<input class="verify-input" placeholder="Enter an Employee Name"></input> <button id="verify-btn">Verify</button>');
   $('#verify-btn').on('click', verifyFunc);
 }
 const verifyFunc = function () {
@@ -73,7 +73,7 @@ const verifyFunc = function () {
 
 
 const lookup = function () {
-  $('#content').html('<input class="lookup-input"></input> <button id="lookup-btn">Lookup</button>');
+  $('#content').html('<input class="lookup-input" placeholder="Enter an Employee Name"></input> <button id="lookup-btn">Lookup</button>');
   $('#lookup-btn').on('click', lookupFunc);
 }
 function lookupFunc() {
@@ -89,13 +89,13 @@ function lookupFunc() {
 }
 
 const contains = function () {
-  $('#content').html('<input class="contains-input"></input> <button id="contains-btn">Contains</button>');
+  $('#content').html('<input class="contains-input" placeholder="Enter part of an Employee Name"></input> <button id="contains-btn">Contains</button>');
   $('#contains-btn').on('click', containsFunc);
 }
 function containsFunc() {
   const containsEmployeeName = $('.contains-input').val().toLowerCase().trim();
   if (containsEmployeeName !== '') {
-    
+
     for (i = 0; i < employeeList.length; i++) {
       if (employeeList[i].name.toLowerCase().includes(containsEmployeeName)) {
         render(employeeList[i].name);
@@ -108,10 +108,10 @@ function containsFunc() {
 }
 
 const update = function () {
-  $('#content').html('<p>Name</p> <input class="empInput"></input>   <p>Number</p> <input class="fieldInput"></input>  <p>Phone</p> <input class="valueInput"></input>  <button id="update-btn">Update</button>'); 
+  $('#content').html('<p>Name</p> <input class="empInput"></input>   <p>Number</p> <input class="fieldInput"></input>  <p>Phone</p> <input class="valueInput"></input>  <button id="update-btn">Update</button>');
   $('#update-btn').on('click', updateFunc);
 }
-function updateFunc(){
+function updateFunc() {
   const updateEmployee = $('.empInput').val().toLowerCase().trim();
   const updateField = $('.fieldInput').val().trim();
   const updateValue = $('.valueInput').val().trim();
@@ -129,7 +129,7 @@ const add = function () {
   $('#content').html('<p>Name</p> <input class="add-name-input"></input> <p>Number</p> <input class="addnum-input"></input> <p>Phone</p> <input class="phone-input"></input> <button class="add-btn">Add</button>');
   $('.add-btn').on('click', addFunc);
 }
-const addFunc = function(){
+const addFunc = function () {
   const addEmployee = $('.add-name-input').val();
   const officeNumber = $('.addnum-input').val();
   const teleNumber = $('.phone-input').val();
@@ -149,7 +149,7 @@ const deleteEmp = function () {
   $('#content').html('<input class="delete-input"></input> <button class="delete-btn">Delete</button>')
   $('.delete-btn').on('click', deleteFunc);
 }
-const deleteFunc = function(){
+const deleteFunc = function () {
   const deleteEmployee = $('.delete-input').val().toLowerCase().trim();
   let index = -1;
   for (i = 0; i < employeeList.length; i++) {
@@ -157,12 +157,14 @@ const deleteFunc = function(){
       index = i;
       render('Employee Deleted');
     }
+
   }
   employeeList.splice(index, 1);
   for (i = 0; i < employeeList.length; i++) {
-    
+
   }
 }
+
 
 
 
