@@ -59,7 +59,7 @@ const verifyFunc = function () {
   let verifyEmployee = $('.verify-input').val().toLowerCase().trim();
   let inList = false;
   for (i = 0; i < employeeList.length; i++) {
-    if (verifyEmployee === employeeList[i].name.toLowerCase()) {
+    if (verifyEmployee === employeeList[i].name.toLowerCase().trim()) {
       inList = true;
     }
   }
@@ -108,7 +108,7 @@ function containsFunc() {
 }
 
 const update = function () {
-  $('#content').html('<p class="name">Name</p> <input class="empInput"></input>   <p class="num">Number</p> <input class="fieldInput"></input>  <p class="phone">Phone</p> <input class="valueInput"></input>  <button id="update-btn">Update</button>');
+  $('#content').html('<p class="name">Name</p> <input class="empInput" placeholder="Enter an existing employee name"></input>   <p class="num">Field</p> <input class="fieldInput" placeholder="Enter a field to update (name, phoneNum, officeNum)"></input>  <p class="phone">New Info</p> <input class="valueInput" placeholder="Enter the updated information"></input>  <button id="update-btn">Update</button>');
   $('#update-btn').on('click', updateFunc);
 }
 function updateFunc() {
@@ -126,7 +126,7 @@ function updateFunc() {
 }
 
 const add = function () {
-  $('#content').html('<p class="name">Name</p> <input class="add-name-input"></input> <p class="num">Number</p> <input class="addnum-input"></input> <p class="phone">Phone</p> <input class="phone-input"></input> <button class="add-btn">Add</button>');
+  $('#content').html('<p class="name">Name</p> <input class="add-name-input" placeholder="Enter a new employee name"></input> <p class="num">Number</p> <input class="addnum-input" placeholder="Enter an office number"></input> <p class="phone">Phone</p> <input class="phone-input" placeholder="Enter a phone number"></input> <button class="add-btn">Add</button>');
   $('.add-btn').on('click', addFunc);
 }
 const addFunc = function () {

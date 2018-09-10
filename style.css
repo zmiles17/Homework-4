@@ -53,6 +53,8 @@ button {
     cursor: pointer;
     outline: inherit;
     font-size: 20px;
+    display: block;
+    margin: 0 auto;
 }
 input {
     display: block;
@@ -61,7 +63,7 @@ input {
     border-color: gray;
     font-family: 'Montserrat';
     color: black;
-    width: 300px;
+    width: 400px;
     
 }
 p {
