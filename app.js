@@ -108,7 +108,7 @@ function containsFunc() {
 }
 
 const update = function () {
-  $('#content').html('<p>Name</p> <input class="empInput"></input>   <p>Number</p> <input class="fieldInput"></input>  <p>Phone</p> <input class="valueInput"></input>  <button id="update-btn">Update</button>');
+  $('#content').html('<p class="name">Name</p> <input class="empInput"></input>   <p class="num">Number</p> <input class="fieldInput"></input>  <p class="phone">Phone</p> <input class="valueInput"></input>  <button id="update-btn">Update</button>');
   $('#update-btn').on('click', updateFunc);
 }
 function updateFunc() {
@@ -126,7 +126,7 @@ function updateFunc() {
 }
 
 const add = function () {
-  $('#content').html('<p>Name</p> <input class="add-name-input"></input> <p>Number</p> <input class="addnum-input"></input> <p>Phone</p> <input class="phone-input"></input> <button class="add-btn">Add</button>');
+  $('#content').html('<p class="name">Name</p> <input class="add-name-input"></input> <p class="num">Number</p> <input class="addnum-input"></input> <p class="phone">Phone</p> <input class="phone-input"></input> <button class="add-btn">Add</button>');
   $('.add-btn').on('click', addFunc);
 }
 const addFunc = function () {

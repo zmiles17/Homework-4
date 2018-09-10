@@ -68,3 +68,9 @@ p {
     color:lightslategray;
     font-size: 20px;
 }
+p:nth-child(3n){
+    margin-bottom: 20px;
+} 
+p.num{
+    margin-bottom: 0;
+}
