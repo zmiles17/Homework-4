@@ -69,5 +69,5 @@ const $ = function (sel) {
   const append = content => {
     const p = document.createElement('p');
     p.textContent = content;
-    document.getElementById('content').appendChild(p);
+    document.getElementById('results').appendChild(p);
   }

@@ -4,12 +4,12 @@ html {
 }
 body {
     display: grid;
-    grid-template-rows: 90px 1fr;
+    grid-template-rows: 90px 1fr 1fr;
     grid-template-columns: 90px 1fr;
     height: 100%;
 }
 nav {
-    grid-row: span 2;
+    grid-row: span 3;
     background-color: rgb(124, 124, 124);
     height: 100%;
     color: white;
@@ -69,4 +69,7 @@ input {
 p {
     color:lightslategray;
     font-size: 20px;
+}
+#results p:nth-child(3n) {
+    margin-bottom: 10px;
 }
