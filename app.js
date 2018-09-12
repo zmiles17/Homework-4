@@ -45,11 +45,7 @@ const employeeList = [
 const print = function () {
   $('#content').empty();
   $('#results').empty();
-  for (j = 0; j < employeeList.length; j++) {
-    render(employeeList[j].name);
-    render(employeeList[j].officeNum);
-    render(employeeList[j].phoneNum);
-  }
+  employeeList.forEach(e => render(e.name, e.officeNum, e.phoneNum));
 }
 
 const verify = function () {
@@ -60,20 +56,14 @@ const verify = function () {
 const verifyFunc = function () {
   $('#results').empty();
   let verifyEmployee = $('.verify-input').val().toLowerCase().trim();
-  let inList = false;
-  for (i = 0; i < employeeList.length; i++) {
-    if (verifyEmployee === employeeList[i].name.toLowerCase().trim()) {
-      inList = true;
-    }
-  }
-  if (inList) {
-    render('Employee Found');
+  const verifyArr = employeeList.filter(e => e.name.toLowerCase() === verifyEmployee);
+  if (verifyArr.length) {
+    render('Employee Found')
   }
   else {
     render('Employee Not Found');
   }
 }
-
 
 const lookup = function () {
   $('#content').html('<input class="lookup-input" placeholder="Enter an Employee Name"></input> <button id="lookup-btn">Lookup</button>');
@@ -81,17 +71,16 @@ const lookup = function () {
   $('#results').empty();
 }
 function lookupFunc() {
-
   const lookupEmployee = $('.lookup-input').val().toLowerCase().trim();
   const lookupArray = employeeList.filter(employee => employee.name.toLowerCase() === lookupEmployee);
-  if(lookupArray.length){
+  if (lookupArray.length) {
     $('#results').empty();
     lookupArray.forEach(e => render(e.name, e.officeNum, e.phoneNum));
-}
-else {
-  $('#results').empty();
-  render('Employee Not Found');
-}
+  }
+  else {
+    $('#results').empty();
+    render('Employee Not Found');
+  }
 }
 
 
@@ -123,9 +112,9 @@ function updateFunc() {
   const updateField = $('.fieldInput').val().trim();
   const updateValue = $('.valueInput').val().trim();
   const updateArr = employeeList.filter(e => e.name.toLowerCase() === updateEmployee);
-  if(updateArr.length){
+  if (updateArr.length) {
     $('#results').empty();
-    if(updateArr[0].hasOwnProperty(updateField)){
+    if (updateArr[0].hasOwnProperty(updateField)) {
       updateArr[0][updateField] = updateValue;
       updateArr.forEach(e => render(e.name, e.officeNum, e.phoneNum));
     }
@@ -133,7 +122,7 @@ function updateFunc() {
       render('Invalid Field');
     }
   }
-  else{
+  else {
     $('#results').empty();
     render('Employee Not Found');
   }
@@ -154,10 +143,10 @@ const addFunc = function () {
     officeNum: officeNumber,
     phoneNum: teleNumber
   });
-    render(employeeList[employeeList.length - 1].name);
-    render(employeeList[employeeList.length - 1].officeNum);
-    render(employeeList[employeeList.length - 1].phoneNum);
-  }
+  render(employeeList[employeeList.length - 1].name);
+  render(employeeList[employeeList.length - 1].officeNum);
+  render(employeeList[employeeList.length - 1].phoneNum);
+}
 
 
 const deleteEmp = function () {
@@ -168,17 +157,15 @@ const deleteEmp = function () {
 const deleteFunc = function () {
   $('#results').empty();
   const deleteEmployee = $('.delete-input').val().toLowerCase().trim();
-  // const deleteArr = employeeList.filter(e => e.name.toLowerCase() !== deleteEmployee);
-  let index = -1;
-  for (i = 0; i < employeeList.length; i++) {
-    if (employeeList[i].name.toLowerCase().trim() === deleteEmployee) {
-      index = i;
-      render('Employee Deleted');
-    }
+  const index = employeeList.findIndex(e => e.name.toLowerCase() === deleteEmployee);
+  if (index < 0) {
+    render('Employee Not Found')
+  }
+  else {
     employeeList.splice(index, 1);
+    render('Employee Deleted');
   }
 }
-
 
 
 
