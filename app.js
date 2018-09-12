@@ -82,7 +82,7 @@ const lookup = function () {
 function lookupFunc() {
 
   const lookupEmployee = $('.lookup-input').val().toLowerCase().trim();
-  const lookupArray = employeeList.filter(employee => employee.name.toLowerCase().includes(lookupEmployee));
+  const lookupArray = employeeList.filter(employee => employee.name.toLowerCase() === lookupEmployee);
   if(lookupArray.length){
     $('#results').empty();
     lookupArray.forEach(e => render(e.name, e.officeNum, e.phoneNum));
