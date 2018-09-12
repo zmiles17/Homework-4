@@ -89,6 +89,7 @@ function lookupFunc() {
     lookupArray.forEach(e => render(e.name, e.officeNum, e.phoneNum));
 }
 else {
+  $('#results').empty();
   render('Employee Not Found');
 }
 }
@@ -121,13 +122,20 @@ function updateFunc() {
   const updateEmployee = $('.empInput').val().toLowerCase().trim();
   const updateField = $('.fieldInput').val().trim();
   const updateValue = $('.valueInput').val().trim();
-  for (i = 0; i < employeeList.length; i++) {
-    if (employeeList[i].name.toLowerCase() === updateEmployee) {
-      employeeList[i][updateField] = updateValue;
-      render(employeeList[i].name);
-      render(employeeList[i].officeNum);
-      render(employeeList[i].phoneNum);
+  const updateArr = employeeList.filter(e => e.name.toLowerCase() === updateEmployee);
+  if(updateArr.length){
+    $('#results').empty();
+    if(updateArr[0].hasOwnProperty(updateField)){
+      updateArr[0][updateField] = updateValue;
+      updateArr.forEach(e => render(e.name, e.officeNum, e.phoneNum));
     }
+    else {
+      render('Invalid Field');
+    }
+  }
+  else{
+    $('#results').empty();
+    render('Employee Not Found');
   }
 }
 
@@ -137,6 +145,7 @@ const add = function () {
   $('#results').empty();
 }
 const addFunc = function () {
+  $('#results').empty();
   const addEmployee = $('.add-name-input').val();
   const officeNumber = $('.addnum-input').val();
   const teleNumber = $('.phone-input').val();
@@ -145,12 +154,11 @@ const addFunc = function () {
     officeNum: officeNumber,
     phoneNum: teleNumber
   });
-  for (i = 0; i < employeeList.length; i++) {
-    render(employeeList[i].name);
-    render(employeeList[i].officeNum);
-    render(employeeList[i].phoneNum);
+    render(employeeList[employeeList.length - 1].name);
+    render(employeeList[employeeList.length - 1].officeNum);
+    render(employeeList[employeeList.length - 1].phoneNum);
   }
-}
+
 
 const deleteEmp = function () {
   $('#content').html('<input class="delete-input"></input> <button class="delete-btn">Delete</button>')
@@ -158,18 +166,16 @@ const deleteEmp = function () {
   $('#results').empty();
 }
 const deleteFunc = function () {
+  $('#results').empty();
   const deleteEmployee = $('.delete-input').val().toLowerCase().trim();
+  // const deleteArr = employeeList.filter(e => e.name.toLowerCase() !== deleteEmployee);
   let index = -1;
   for (i = 0; i < employeeList.length; i++) {
     if (employeeList[i].name.toLowerCase().trim() === deleteEmployee) {
       index = i;
       render('Employee Deleted');
     }
-
-  }
-  employeeList.splice(index, 1);
-  for (i = 0; i < employeeList.length; i++) {
-
+    employeeList.splice(index, 1);
   }
 }
 
