@@ -44,6 +44,7 @@ const employeeList = [
 
 const print = function () {
   $('#content').empty();
+  $('#results').empty();
   for (j = 0; j < employeeList.length; j++) {
     render(employeeList[j].name);
     render(employeeList[j].officeNum);
@@ -100,16 +101,14 @@ const contains = function () {
 }
 function containsFunc() {
   const containsEmployeeName = $('.contains-input').val().toLowerCase().trim();
-  if (containsEmployeeName !== '') {
-
-    for (i = 0; i < employeeList.length; i++) {
-      if (employeeList[i].name.toLowerCase().includes(containsEmployeeName)) {
-        render(employeeList[i].name);
-        render(employeeList[i].officeNum);
-        render(employeeList[i].phoneNum);
-      }
-
-    }
+  const containsArr = employeeList.filter(e => e.name.toLowerCase().includes(containsEmployeeName));
+  if (containsEmployeeName !== '' && containsArr.length) {
+    $('#results').empty();
+    containsArr.forEach(e => render(e.name, e.officeNum, e.phoneNum));
+  }
+  else {
+    $('#results').empty();
+    render('Employee Not Found');
   }
 }
 
